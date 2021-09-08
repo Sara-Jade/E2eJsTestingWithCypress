@@ -20,4 +20,11 @@ describe('Basic page element interactions', () => {
 
         cy.get('[data-cy="box-3-selected-name"]').invoke('text').should('equal', 'Option One');
     });
+
+    it('should display the name of the most recently hovered-over item', () => {
+        cy.get('[data-cy="box-4-items-list"] > :nth-child(3)').trigger('mouseover', 10, 20);
+        cy.get('[data-cy="box-4-items-list"] > :nth-child(2)').trigger('mouseover');
+
+        cy.get('[data-cy="box-4-selected-name"]').invoke('text').should('equal', 'Option Two');
+    });
 });
