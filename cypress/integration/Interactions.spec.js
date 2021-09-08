@@ -10,7 +10,11 @@ describe('Basic page element interactions', () => {
     });
 
     it('should display the count of the selected checkboxes', () => {
-        cy.get('[data-cy="box-2-checkboxes"] > :nth-child(3) input').check();
+        cy.get('[data-cy="box-2-checkboxes"] > :nth-child(3) input').check()
+            .then(() => { debugger; }); 
+            // Must have dev tools open for debugger to work.
+            // Don't forget to look in console and type subject and subject.text()!
+            // Also click into commands on the left to get a console summary of what happened.
 
         cy.get('[data-cy="box-2-selected-count"]').invoke('text').should('equal', '1');
     });
@@ -23,7 +27,7 @@ describe('Basic page element interactions', () => {
 
     it('should display the name of the most recently hovered-over item', () => {
         cy.get('[data-cy="box-4-items-list"] > :nth-child(3)').trigger('mouseover', 10, 20);
-        cy.get('[data-cy="box-4-items-list"] > :nth-child(2)').trigger('mouseover');
+        cy.get('[data-cy="box-4-items-list"] > :nth-child(2)').trigger('mouseover').debug(); // Another way to debug with dev tools open.
 
         cy.get('[data-cy="box-4-selected-name"]').invoke('text').should('equal', 'Option Two');
     });
