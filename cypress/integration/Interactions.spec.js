@@ -1,3 +1,11 @@
+// Can use test doubles (spies, mocks, stubs) to simulate server errors or recurring workflows like logging in.
+// Usually you don't want to, because this would be unit testing, but it sometimes makes sense for the above situations.
+// This works better if your Cypress tests sit alongside your product code, so the course doesn't do a real demo.
+
+// Usually, we don't want to alert, but this is a demo to prove 
+// that Cypress can access env variables.
+alert(Cypress.env('MyEnvVARIABLE')); 
+
 describe('Basic page element interactions', () => {
     beforeEach(() => {
         cy.visit('/example-4');
